@@ -1,4 +1,4 @@
-# FreeRTOS IoT Gateway Demo (Linux POSIX)
+# FreeRTOS Tasking Demo (Linux POSIX)
 
 This is a demonstration project showcasing **FreeRTOS features** on a Linux (POSIX) simulation.
 
@@ -38,7 +38,7 @@ It demonstrates:
 
 ```bash
 git clone <your-github-repo>
-cd freertos-iot-gateway
+cd freertos-tasking-demo
 mkdir build
 cd build
 cmake ..
@@ -54,7 +54,7 @@ Output:
 
 Project Structure:
 
-freertos-iot-gateway/
+freertos-tasking-demo/
 ├─ app/
 │  └─ main.c
 ├─ include/
