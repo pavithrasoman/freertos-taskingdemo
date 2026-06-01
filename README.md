@@ -26,6 +26,33 @@ It demonstrates:
 
 - A software timer triggers every 5 seconds and prints a message.
 
+## System Architecture
+
+```mermaid
+flowchart TD
+
+    A[Sensor Task<br/>Priority: High<br/>1s Period] -->|xQueueSend| B[FreeRTOS Queue]
+
+    A -->|Set Event Bit| C[Event Group]
+
+    C -->|Data Ready Event| D[Monitor Task<br/>Priority: Medium]
+
+    B -->|xQueueReceive| D
+
+    D -->|Mutex Protected| E[Console Output]
+
+    F[Software Timer<br/>5s Period] -->|Callback| E
+
+    G[Print Mutex] -.-> A
+    G -.-> D
+    G -.-> F
+
+    H[FreeRTOS Scheduler]
+    H --> A
+    H --> D
+    H --> F
+```
+
 ## FreeRTOS Features Demonstrated
 
 - **Tasks** (`xTaskCreate`)  
